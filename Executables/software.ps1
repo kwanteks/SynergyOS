@@ -22,8 +22,8 @@ Start-Process -FilePath "$env:TEMP\\firefox.exe" -ArgumentList '/S /ALLUSERS=1' 
 
 
 # startisback
-Invoke-WebRequest "https://www.startallback.com/download.php" -OutFile "$env:TEMP\\startisback.exe"
-Start-Process "$env:TEMP\startisback.exe" -ArgumentList "/silent" 
+Invoke-WebRequest "https://www.startallback.com/download.php" -OutFile "$env:TEMP\\startallback.exe"
+Start-Process "$env:TEMP\\startallback.exe" -ArgumentList "/silent /allusers" -Wait
 
 
 
@@ -33,5 +33,5 @@ Start-Process "$env:TEMP\\7zip.exe" -ArgumentList "/S" -Wait
 
 # vcredist
 Invoke-WebRequest "https://aka.ms/vs/17/release/vc_redist.x64.exe" -OutFile "$env:TEMP\\vcredist.exe"
-Start-Process "$env:TEMP\\vcredist.exe" -ArgumentList "/quiet /norestart" -Wait
+Start-Process "$env:TEMP\\vcredist.exe" -ArgumentList "/quiet /norestart" -Waits
 
