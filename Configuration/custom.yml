@@ -1,0 +1,68 @@
+---
+title: Custom
+privilege: Admin
+actions:
+  - !registryValue:
+    path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance'
+    value: 'Enabled'
+    type: REG_DWORD
+    data: '0'
+
+ # Disable UAC
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'EnableLUA', type:  REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'PromptOnSecureDesktop', type:  REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ConsentPromptBehaviorAdmin', type:  REG_DWORD, data: '0'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ValidateAdminCodeSignatures', type:  REG_DWORD, data: '0'}
+
+  - !writeStatus {status: "Installing Software"}
+  - !task: {path: 'Tasks\software.yml'}
+  - !cmd: {command: '"openshell.bat"', exeDir: true, runas: currentUserElevated, wait: true}
+
+
+  - !writeStatus {status: "Copying Files"}
+  - !cmd: {exeDir: true, command: 'xcopy "Windows" "%windir%" /E /I /Y'}
+  - !cmd: {exeDir: true, command: 'xcopy  "SOS" "%systemdrive%\SOS" /E /I /Y'}
+  - !cmd: {exeDir: true, command: 'move /y "SOS.lnk" "%USERPROFILE%\Desktop"'}
+
+  - !writeStatus: {status: "Tweaking Registry"}
+
+  - !writeStatus: {status: "Disabling Windows Updates"}
+  - !task {path: 'Tasks\updates\update.yml'}
+  - !task {path: 'Tasks\updates\driver.yml'}
+
+  - !writeStatus {status: "Configuring Privacy"}
+  - !task {path: 'Tasks\registry\privacy.yml'}
+
+  - !writeStatus {status: 'Configuring Settings'}
+  - !task {path: 'Tasks\registry\settings.yml'}
+
+  - !writeStatus {status: "Applying Win32ps"}
+  - !task {path: 'Tasks\registry\win32.yml'}
+
+  - !writeStatus {status: "Removing AppX Packages"}
+  - !task {path: 'Tasks\package\appx.yml'}
+  - !cmd: {command: '"oned.bat"', exeDir: true, runas: currentUserElevated, wait: true}
+
+  - !writeStatus {status: "Applying Scripts"}
+  - !cmd: {command: '"power.bat"', exeDir: true, wait: true}
+  - !cmd: {command: '"services.bat"', exeDir: true, runas: currentUserElevated, wait: true}
+  - !cmd: {command: '"network.bat"', exeDir: true, runas: currentUserElevated, wait: true}
+  - !powerShell: {command: '.\devices.ps1', exeDir: true, wait: true}
+  - !cmd: {command: '"mitigations.bat"', exeDir: true, runas: currentUserElevated, wait: true}
+  
+  - !powerShell: {command: '.\wallpaper.ps1 -Mode Desktop -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
+  - !powerShell: {command: '.\wallpaper.ps1 -Mode LockScreen -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
+
+  - !writeStatus {status: "Optimizing PowerShell"}
+  - !run:
+    exeDir: true
+    exe: "powershell"
+    args: '-NoP -ExecutionPolicy Bypass -File ngen.ps1'
+    weight: 50
+
+  - !writeStatus {status: "Finalizing"}
+  - !cmd: {command: '"updhealth.bat"', exeDir: true, runas: currentUserElevated, wait: true}
+  - !powerShell: {command: '.\cleanup.ps1', exeDir: true, wait: true}
+  - !cmd: {command: '"final.bat"', exeDir: true, runas: currentUserElevated, wait: true}
+
+

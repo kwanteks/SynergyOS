@@ -1,0 +1,34 @@
+---
+title: Software 
+description: Install Software
+privilege: TrustedInstaller 
+actions:
+
+ # brave
+ - !writeStatus: {status: 'Installing Brave', option: "browser-brave"} 
+ - !powerShell:
+   command: '.\software.ps1 -Brave'
+   exeDir: true
+   option: "browser-brave"
+   runas: currentUserElevated
+   wait: true
+    
+ # firefox 
+ - !writeStatus: {status: 'Installing Firefox', option: "browser-firefox"}
+ - !powerShell:
+   command: '.\software.ps1 -Firefox'
+   exeDir: true
+   runas: currentUserElevated
+   option: "browser-firefox"
+   wait: true
+    
+
+  # chrome
+ - !writeStatus {status: 'Installing Chrome', option: "browser-chrome"}
+ - !powerShell:
+   command: '.\software.ps1 -Chrome'
+   exeDir: true
+   runas: currentUserElevated
+   option: "browser-chrome"
+   wait: true
+    

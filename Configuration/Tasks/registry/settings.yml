@@ -1,0 +1,134 @@
+---
+title: Setttings
+description: Configure Windows settings
+privilege: TrustedInstaller
+actions: 
+
+  # disable settingssync
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync', value: 'SyncPolicy', type: REG_DWORD, data: '5'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\Accessibility', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\AppSync', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\Browsersettings', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\Credentials', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\DesktopTheme', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\Language', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\PackageState', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\Personalization', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\StartLayout', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\settingSync\Groups\Windows', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisablesettingSync', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisablesettingSyncUserOverride', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableAppSyncsettingSync', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableAppSyncsettingSyncUserOverride', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableApplicationsettingSync', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableApplicationsettingSyncUserOverride', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableCredentialssettingSync', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableCredentialssettingSyncUserOverride', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableDesktopThemesettingSync', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableDesktopThemesettingSyncUserOverride', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisablePersonalizationsettingSync', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisablePersonalizationsettingSyncUserOverride', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableStartLayoutsettingSync', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableStartLayoutsettingSyncUserOverride', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableSyncOnPaidNetwork', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableWebBrowsersettingSync', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableWebBrowsersettingSyncUserOverride', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableWindowssettingSync', type: REG_DWORD, data: '2'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\settingSync', value: 'DisableWindowssettingSyncUserOverride', type: REG_DWORD, data: '1'}
+
+ # configure mouse
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseHoverTime', type: REG_SZ, data: '0'}
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseSensitivity', type: REG_SZ, data: '10'}
+ - !registryValue: {path: 'HKCU\Control Panel\Mouse', value: 'MouseSpeed', type: REG_SZ, data: '0'}
+
+ # disable transparancy and enable dark mode
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'AppsUseLightTheme', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'SystemUsesLightTheme', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize', value: 'EnableTransparency', type: REG_DWORD, data: '0'}
+
+ # disable task view button
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowTaskViewButton', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKU\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'ShowTaskViewButton', type: REG_DWORD, data: '0'}
+
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'AllowAutoGameMode', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'AutoGameModeEnabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'GamePanelStartupTipIndex', type: REG_DWORD, data: '3'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'ShowStartupPanel', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'UseNexusForGameBarEnabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR', value: 'AppCaptureEnabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR', value: 'AllowGameDVR', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR', value: 'value', type: REG_DWORD, data: '0'}
+
+ # remove security health from startup
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run', value: 'SecurityHealth', operation: delete}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run', value: 'SecurityHealth', operation: delete}
+
+
+ # modify this pc 
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{374DE290-123F-4565-9164-39C4925E467B}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af}', operation: add}
+ - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}', operation: add}
+
+ # disable sleep study
+ - !run: {exe: 'wevtutil.exe', args: 'set-log "Microsoft-Windows-SleepStudy/Diagnostic" /e:false'}
+ - !run: {exe: 'wevtutil.exe', args: 'set-log "Microsoft-Windows-Kernel-Processor-Power/Diagnostic" /e:false'}
+ - !run: {exe: 'wevtutil.exe', args: 'set-log "Microsoft-Windows-UserModePowerService/Diagnostic" /e:false'}
+ - !run: {exe: 'schtasks', args: '/Change /TN "\\Microsoft\\Windows\\Power Efficiency Diagnostics\\AnalyzeSystem" /Disable'}
+
+
+ # set ps1 files to open by default
+ - !registryValue: {path: 'HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\Open\Command', value: '@', type: REG_SZ, data: '"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -File "%1"'}
+
+ # set taskbar alignment to left
+ -  !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarAl', type: REG_DWORD, data: '0'} 
+
+ # hide search box
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search', value: 'SearchboxTaskbarMode', type: REG_DWORD, data: '0'}
+
+ # configure explorer
+ - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'DontPrettyPath', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'HideFileExt', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'DisallowShaking', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer', value: 'NoInstrumentation', type: REG_DWORD, data: '1'}
+
+ # clear taskbar
+ - !registryKey: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband', operation: delete}
+ 
+ # enable classic context menu
+ - !registryValue: {path: 'HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32', value: '', type: REG_SZ, data: ''}
+
+ # disable widgets
+ - !registryValue: {path: 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'TaskbarDa', type: REG_DWORD, data: '0'}
+
+ # svcsplit host
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control', value: 'SvcHostSplitThresholdInKB', type:  REG_DWORD, data: '4294967295'}
+
+ # disable defender
+ - !status {status: 'Disable Defender', option: "disable-defender"}
+ - !powerShell:
+    command: '.\defender.bat -disable' 
+    exeDir: true
+    runas: currentUserElevated
+    option: 'disable-defender'
+    wait: true
+
+
+ # enable defender
+ - !status {status: 'Enable Defender', option: "enable-defender"}
+ - !powerShell:
+   command: '.\defender.bat -enable' 
+   exeDir: true
+   runas: currentUserElevated
+   option: 'enable-defender'
+   wait: true
+
+
+  

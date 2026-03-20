@@ -1,0 +1,148 @@
+---
+title: AppX
+description: Remove appx packages
+privilege: TrustedInstaller
+actions:
+
+  - !appx: {name: '*3DViewer*', type: family}
+  - !appx: {name: '*Apprep.Chx*', type: family}
+  - !appx: {name: '*AssignedAccessLockApp*', type: family}
+  - !appx: {name: '*Bing*', type: family}
+  - !appx: {name: '*CamoStudio*', type: family}
+  - !appx: {name: '*Clipchamp*', type: family}
+  - !appx: {name: '*CloudExperienceHost*', type: family}
+  - !appx: {name: '*CommsPhone*', type: family}
+  - !appx: {name: '*ConnectivityStore*', type: family}
+  - !appx: {name: '*ContentDeliveryManager*', type: family}
+  - !appx: {name: '*Disney*', type: family}
+  - !appx: {name: '*FeedbackHub*', type: family}
+  - !appx: {name: '*Getstarted*', type: family}
+  - !appx: {name: '*Microsoft.549981C3F5F10*', type: family}
+  - !appx: {name: '*Microsoft.Calculator*', type: family}
+  - !appx: {name: '*Microsoft.GetHelp*', type: family}
+  - !appx: {name: '*Microsoft.Messaging*', type: family}
+  - !appx: {name: '*Microsoft.OneConnect*', type: family}
+  - !appx: {name: '*Microsoft.People*', type: family}
+  - !appx: {name: '*Microsoft.Todos*', type: family}
+  - !appx: {name: '*Microsoft.WindowsAlarms*', type: family}
+ # - !appx: {name: '*MicrosoftEdge*', type: family}
+  - !appx: {name: '*MicrosoftOfficeHub*', type: family}
+  - !appx: {name: '*MicrosoftTeams*', type: family}
+  - !appx: {name: '*MSTeams*', type: family}
+  - !appx: {name: '*MixedReality*', type: family}
+  - !appx: {name: '*OneDrive*', type: family}
+  - !appx: {name: '*OneNote*', type: family}
+  - !appx: {name: '*OOBENetwork*', type: family}
+  - !appx: {name: '*OutlookForWindows*', type: family}
+  - !appx: {name: '*Parental*', type: family}
+  - !appx: {name: '*PeopleExperienceHost*', type: family}
+  - !appx: {name: '*Photos*', type: family}
+  - !appx: {name: '*PinningConfirmationDialog*', type: family}
+  - !appx: {name: '*PowerAutomate*', type: family}
+  - !appx: {name: '*QuickAssist*', type: family}
+  - !appx: {name: '*SecHealthUI*', type: family}
+  - !appx: {name: '*SecureAssessmentBrowser*', type: family}
+  - !appx: {name: '*SkypeApp*', type: family}
+  - !appx: {name: '*Solit*', type: family}
+  - !appx: {name: '*Spotify*', type: family}
+  - !appx: {name: '*Sticky*', type: family}
+  - !appx: {name: '*StorePurchaseApp*', type: family}
+  - !appx: {name: '*Sway*', type: family}
+  - !appx: {name: '*Wallet*', type: family}
+  - !appx: {name: '*WebExperienceHost*', type: app}
+  - !appx: {name: '*Windows.DevHome*', type: family}
+  - !appx: {name: '*WindowsCamera*', type: family}
+  - !appx: {name: '*windowscommunicationsapps*', type: family}
+  - !appx: {name: '*WindowsMaps*', type: family}
+  - !appx: {name: '*WindowsPhone*', type: family}
+  - !appx: {name: '*WindowsSoundRecorder*', type: family}
+  - !appx: {name: '*YourPhone*', type: family}
+  - !appx: {name: '*Zune*', type: family}
+  - !appx: {name: '*MicrosoftFamily*', type: family}
+ # - !appx: {name: '*Edge.GameAssist*', type: family}
+  - !appx: {name: 'Microsoft.Copilot*', type: family}
+  - !appx: {name: '*CopilotNudges*', type: app}
+
+
+  - !status: {status: 'Removing Microsoft Edge'}
+  - !taskKill: {name: "MicrosoftEdgeUpdate"}
+  - !taskKill: {name: "msedge"}
+  - !taskKill: {name: "MicrosoftEdge*"}
+  - !taskKill: {name: "setup", pathContains: "\\Edge"}
+  - !service: {name: "edgeupdate", operation: delete}
+  - !service: {name: "edgeupdatem", operation: delete}
+  - !service: {name: "MicrosoftEdgeElevationService", operation: delete}
+  - !appx: {name: 'Microsoft.MicrosoftEdge.Stable*', type: family}
+  - !appx: {name: 'Microsoft.MicrosoftEdgeDevToolsClient*', type: family}
+  - !file: {path: '%SystemDrive%\Users\Public\Desktop\Microsoft Edge.lnk'}
+  - !file: {path: '%ProgramData%\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk'}
+  - !file: {path: '%windir%\system32\MicrosoftEdgeBCHost.exe'}
+  - !file: {path: '%windir%\system32\MicrosoftEdgeCP.exe'}
+  - !file: {path: '%windir%\system32\MicrosoftEdgeDevTools.exe'}
+  - !file: {path: '%windir%\system32\MicrosoftEdgeSH.exe'}
+  - !file: {path: '%windir%\system32\Tasks\MicrosoftEdge*'}
+  - !file: {path: "%ProgramFiles(x86)%\\Microsoft\\Edge"}
+  - !file: {path: "%ProgramFiles(x86)%\\Microsoft\\EdgeUpdate"}
+  - !file: {path: "%ProgramFiles(x86)%\\Microsoft\\EdgeCore"}
+  - !systemPackage: {name: 'Microsoft-Windows-Internet-Browser-Deployment', arch: amd64, language: 'neutral'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarMigratedBrowserPin', operation: delete}
+  - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge', operation: delete}
+  - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update', operation: delete}
+  - !registryKey: {path: 'HKLM\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate'}
+  - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Active Setup\Installed Components\{9459C573-B17A-45AE-9F64-1857B5D58CEE}', operation: delete}
+  - !registryKey: {path: 'HKCR\CLSID\{1FCBE96C-1697-43AF-9140-2897C7C69767}'}
+  - !registryKey: {path: 'HKCR\AppID\{1FCBE96C-1697-43AF-9140-2897C7C69767}'}
+  - !registryKey: {path: 'HKCR\Interface\{C9C2B807-7731-4F34-81B7-44FF7779522B}'}
+  - !registryKey: {path: 'HKCR\TypeLib\{C9C2B807-7731-4F34-81B7-44FF7779522B}'}
+  - !registryKey: {path: 'HKCR\MSEdgeHTM'}
+  - !registryKey: {path: 'HKCR\MSEdgePDF'}
+  - !registryKey: {path: 'HKCR\MSEdgeMHT'}
+  - !registryKey: {path: 'HKCR\AppID\{628ACE20-B77A-456F-A88D-547DB6CEEDD5}'}
+  - !registryKey: {path: 'HKLM\SOFTWARE\Clients\StartMenuInternet\Microsoft Edge'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\RegisteredApplications', value: 'Microsoft Edge', operation: delete}
+  - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\msedge.exe'}
+  - !registryValue: {path: 'HKCR\.htm\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCR\.html\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCR\.shtml\OpenWithProgids', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCR\.svg\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCR\.xht\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCR\.xhtml\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCR\.webp\OpenWithProgids', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCR\.xml\OpenWithProgIds', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts', value: 'MSEdgeHTM_microsoft-edge', operation: delete}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Internet Explorer\Main\EnterpriseMode', value: 'MSEdgePath', operation: delete}
+  - !registryKey: {path: 'HKCR\AppID\ie_to_edge_bho.dll'}
+  - !registryKey: {path: 'HKCR\AppID\{31575964-95F7-414B-85E4-0E9A93699E13}'}
+  - !registryKey: {path: 'HKCR\CLSID\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}'}
+  - !registryKey: {path: 'HKCR\WOW6432Node\CLSID\{1FD49718-1D00-4B19-AF5F-070AF6D5D54C}'}
+  - !registryKey: {path: 'HKCR\ie_to_edge_bho.IEToEdgeBHO'}
+  - !registryKey: {path: 'HKCR\ie_to_edge_bho.IEToEdgeBHO.1'}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run', value: 'Microsoft Edge Update', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\RegisteredApplications', value: 'Microsoft Edge', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.htm\OpenWithProgids', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.html\OpenWithProgids', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.shtml\OpenWithProgids', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.svg\OpenWithProgids', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.xht\OpenWithProgids', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.xhtml\OpenWithProgids', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Classes\.webp\OpenWithProgids', value: 'MSEdgeHTM', operation: delete}
+  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ApplicationAssociationToasts', value: 'MSEdgeHTM_microsoft-edge', operation: delete}
+  - !registryKey: {path: 'HKCU\SOFTWARE\Microsoft\Active Setup\Installed Components\{9459C573-B17A-45AE-9F64-1857B5D58CEE}'}
+  - !registryKey: {path: 'HKCU\SOFTWARE\Microsoft\Edge'}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'Install{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'Update{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'Update{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'Update{2CD8A007-E189-409D-A2C8-9AF4EF3C72AA}', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'Update{65C35B14-6C1D-4122-AC46-7148CC9D6497}', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'Update{0D50BFEC-CD6A-4F9A-964C-C7416E3ACB10}', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'Install{65C35B14-6C1D-4122-AC46-7148CC9D6497}', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'InstallDefault', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'CreateDesktopShortcutDefault', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\Policies\Microsoft\EdgeUpdate', value: 'UpdateDefault', data: '0', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\EdgeUpdate', value: 'DoNotUpdateToEdgeWithChromium', data: '1', type: REG_DWORD}
+  - !registryValue: {path: 'HKLM\Software\OEM\MicrosoftEdge', value: 'AutoLaunchOnLogonBehavior', data: '0', type: REG_DWORD}
+  - !powerShell:
+    command: >-
+      Get-ScheduledTask | Where-Object { $_.TaskName -like '*MicrosoftEdgeUpdate*' } | ForEach-Object { Unregister-ScheduledTask -TaskName $_.TaskName -Confirm:$false }
+    runas: currentUserElevated
+    wait: true

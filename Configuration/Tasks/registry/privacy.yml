@@ -1,0 +1,38 @@
+---
+title: Privacy
+description: Enhancing Privacy
+privilege: TrustedInstaller
+actions:
+
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection', value: 'AllowTelemetry', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\DataCollection', value: 'AllowTelemetry', type: REG_DWORD, data: '0'} 
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent', value: 'DisableWindowsConsumerFeatures', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Visibility', value: 'DiagnosticErrorText', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings', value: 'DiagnosticErrorText', type: REG_SZ, data: ''}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\WindowsSelfHost\UI\Strings', value: 'DiagnosticLinkText', type: REG_SZ, data: ''}
+ - !registryValue: {path: 'HKCU\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppContainer\Storage\microsoft.microsoftedge_8wekyb3d8bbwe\MicrosoftEdge\PhishingFilter', value: 'EnabledV9', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat', value: 'DisableInventory', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat', value: 'DisableUAR', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Personalization', value: 'NoLockScreenCamera', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo', value: 'Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\Software\Microsoft\Input\TIPC', value: 'Enabled', type: REG_DWORD, data: '0'}
+
+ # disable get tips, tricks, etc
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager', value: 'SoftLandingEnabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager', value: 'SubscribedContent-338389Enabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKU\.DEFAULT\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager', value: 'SoftLandingEnabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKU\.DEFAULT\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager', value: 'SubscribedContent-338389Enabled', type: REG_DWORD, data: '0'}
+
+ # disable location
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors', value: 'DisableWindowsLocationProvider', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors', value: 'DisableLocationScripting', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors', value: 'DisableLocation', type: REG_DWORD, data: '1'}
+
+ # disable biometrics
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Biometrics', value: 'Enabled', type: REG_DWORD, data: '0'}
+
+ # disable pca
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\AppCompat', value: 'DisablePCA', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\PcaSvc', value: 'Start', type: REG_DWORD, data: '4'}
+
