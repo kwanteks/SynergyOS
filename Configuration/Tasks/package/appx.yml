@@ -60,9 +60,7 @@ actions:
   - !appx: {name: '*MicrosoftFamily*', type: family}
  # - !appx: {name: '*Edge.GameAssist*', type: family}
   - !appx: {name: 'Microsoft.Copilot*', type: family}
-  - !appx: {name: '*CopilotNudges*', type: app}
-
-
+  - !appx: {name: '*CopilotNudges*', type: family}
   - !status: {status: 'Removing Microsoft Edge'}
   - !taskKill: {name: "MicrosoftEdgeUpdate"}
   - !taskKill: {name: "msedge"}
