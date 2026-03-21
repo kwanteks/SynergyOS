@@ -99,8 +99,7 @@ actions:
  - !registryValue: {path: 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'DisallowShaking', type: REG_DWORD, data: '1'}
  - !registryValue: {path: 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer', value: 'NoInstrumentation', type: REG_DWORD, data: '1'}
 
- # clear taskbar
- - !registryKey: {path: 'HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband', operation: delete}
+
  
  # enable classic context menu
  - !registryValue: {path: 'HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32', value: '', type: REG_SZ, data: ''}

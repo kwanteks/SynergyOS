@@ -46,7 +46,6 @@ actions:
   - !appx: {name: '*Solit*', type: family}
   - !appx: {name: '*Spotify*', type: family}
   - !appx: {name: '*Sticky*', type: family}
-  - !appx: {name: '*StorePurchaseApp*', type: family}
   - !appx: {name: '*Sway*', type: family}
   - !appx: {name: '*Wallet*', type: family}
   - !appx: {name: '*WebExperienceHost*', type: app}
