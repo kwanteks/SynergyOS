@@ -4,6 +4,7 @@ for %%z in (
     XblGameSave 
     XboxGipSvc
     XboxNetApiSvc
+    DoSvc
 ) do (
 Reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\%%z" /v "Start" /t REG_DWORD /d "2" /f 
 ) >nul 2>&1
