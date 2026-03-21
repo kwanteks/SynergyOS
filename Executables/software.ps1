@@ -21,10 +21,9 @@ Start-Process -FilePath "$env:TEMP\\firefox.exe" -ArgumentList '/S /ALLUSERS=1' 
 }
 
 
-# openshell
-$u=(Invoke-WebRequest -Uri "https://api.github.com/repos/Open-Shell/Open-Shell-Menu/releases/latest" -UseBasicParsing | ConvertFrom-Json).assets | Where-Object {$_.name -match "OpenShellSetup"} | Select-Object -ExpandProperty browser_download_url
-curl.exe -LSs $u -o "$env:TEMP\openshell.exe"
-Start-Process "$env:TEMP\openshell.exe" -ArgumentList "/qn ADDLOCAL=StartMenu" 
+# startisback
+Invoke-WebRequest "https://www.startallback.com/download.php" -OutFile "$env:TEMP\\startisback.exe"
+Start-Process "$env:TEMP\startisback.exe" -ArgumentList "/silent" 
 
 
 
