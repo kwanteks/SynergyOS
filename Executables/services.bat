@@ -9,7 +9,6 @@ for %%a in (
   BluetoothUserService
   BcastDVRUserService_389fd
   DoSvc
-  NaturalAuthentication
   MapsBroker
   DiagTrack
   lfsvc
@@ -36,8 +35,6 @@ for %%a in (
   FrameServerMonitor
   stisvc
   WerSvc
-  WpnService
-  WpnUserService
   Spooler
   PrintWorkflowUserSv
   PrintNotify
