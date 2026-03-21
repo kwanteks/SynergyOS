@@ -45,5 +45,5 @@ for %%a in (
   icssvc
   GpuEnergyDrv    
 ) do (
-  Reg.exe add "HKLM\SYSTEM\CurrentControlSet\Services\%%a" /v "Start" /t REG_DWORD /d "4" /f
+  Reg add "HKLM\SYSTEM\CurrentControlSet\Services\%%a" /v "Start" /t REG_DWORD /d "4" /f
 ) 
