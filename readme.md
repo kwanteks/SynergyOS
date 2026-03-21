@@ -10,13 +10,6 @@ SynergyOS is a high-performance Windows transformation playbook designed for gam
 SynergyOS is the technical successor to the work of **Khorvie Tech**. 
 
 As a continuation of the tweaks originally developed and distributed by Khorvie, SynergyOS takes those proven foundations and elevates them for the modern Windows era (22H2–26H1). We have modernized, refined, and expanded upon the tweaks that Khorvie's developed and distributed to ensure elite compatibility with the latest hardware.
-
-### How We Implemented It
-We moved away from manual registry files and batch scripts to a fully integrated **.apbx** architecture:
-* **Automated Precision:** Every tweak is applied via specialized hooks that ensure system files are modified safely and consistently.
-* **Modernized Logic:** We re-evaluated every legacy tweak to ensure it benefits modern hybrid CPU architectures (Intel P/E-cores and AMD 3D V-Cache).
-* **Seamless Deployment:** By leveraging the AME framework, we provide a "one-click" experience that ensures every user gets the exact same optimized result.
-
 ---
 
 ## 🌟 The Vision
