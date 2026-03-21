@@ -16,7 +16,6 @@ actions:
 
   - !writeStatus {status: "Installing Software"}
   - !task: {path: 'Tasks\software.yml'}
-  - !cmd: {command: '"openshell.bat"', exeDir: true, runas: currentUserElevated, wait: true}
 
 
   - !writeStatus {status: "Copying Files"}
