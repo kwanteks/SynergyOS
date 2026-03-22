@@ -93,6 +93,12 @@ actions:
  # hide search box
  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search', value: 'SearchboxTaskbarMode', type: REG_DWORD, data: '0'}
 
+ # hide recommended section in start menu
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer', value: 'HideRecommendedSection', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Education', value: 'IsEducationEnvironment', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'HideRecommendedSection', type: REG_DWORD, data: '1'}
+
+
  # configure explorer
  - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'DontPrettyPath', type: REG_DWORD, data: '1'}
  - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'HideFileExt', type: REG_DWORD, data: '0'}
