@@ -22,8 +22,8 @@ Start-Process -FilePath "$env:TEMP\\firefox.exe" -ArgumentList '/S /ALLUSERS=1' 
 
 
 # startisback
-Invoke-WebRequest "https://www.startallback.com/download.php" -OutFile "$env:TEMP\\startallback.exe"
-Start-Process "$env:TEMP\\startallback.exe" -ArgumentList "/silent /allusers" -Wait
+#Invoke-WebRequest "https://www.startallback.com/download.php" -OutFile "$env:TEMP\\startallback.exe"
+#Start-Process "$env:TEMP\\startallback.exe" -ArgumentList "/silent /allusers" -Wait
 
 
 
