@@ -4,6 +4,7 @@ description: Remove appx packages
 privilege: TrustedInstaller
 actions:
 
+
   - !appx: {name: '*3DViewer*', type: family}
   - !appx: {name: '*Apprep.Chx*', type: family}
   - !appx: {name: '*AssignedAccessLockApp*', type: family}
@@ -25,7 +26,6 @@ actions:
   - !appx: {name: '*Microsoft.People*', type: family}
   - !appx: {name: '*Microsoft.Todos*', type: family}
   - !appx: {name: '*Microsoft.WindowsAlarms*', type: family}
- # - !appx: {name: '*MicrosoftEdge*', type: family}
   - !appx: {name: '*MicrosoftOfficeHub*', type: family}
   - !appx: {name: '*MicrosoftTeams*', type: family}
   - !appx: {name: '*MSTeams*', type: family}
@@ -58,9 +58,10 @@ actions:
   - !appx: {name: '*YourPhone*', type: family}
   - !appx: {name: '*Zune*', type: family}
   - !appx: {name: '*MicrosoftFamily*', type: family}
- # - !appx: {name: '*Edge.GameAssist*', type: family}
   - !appx: {name: 'Microsoft.Copilot*', type: family}
   - !appx: {name: '*CopilotNudges*', type: family}
+
+  
   - !status: {status: 'Removing Microsoft Edge'}
   - !taskKill: {name: "MicrosoftEdgeUpdate"}
   - !taskKill: {name: "msedge"}
@@ -143,3 +144,5 @@ actions:
       Get-ScheduledTask | Where-Object { $_.TaskName -like '*MicrosoftEdgeUpdate*' } | ForEach-Object { Unregister-ScheduledTask -TaskName $_.TaskName -Confirm:$false }
     runas: currentUserElevated
     wait: true
+  
+  

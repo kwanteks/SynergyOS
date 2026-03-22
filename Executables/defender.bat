@@ -1,4 +1,4 @@
-Defender@echo off
+@echo off
 setLOCAL ENABLEDELAYEDEXPANSION
 
 if "%1"=="disable" set state=disable
