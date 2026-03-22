@@ -26,9 +26,6 @@ for /f "tokens=*" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum\SCSI" ^
 :: clear taskband registry
 Reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband" /f 
 
-:: hide recommended section in start menu
-Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer" /v "HideRecommendedSection" /t REG_DWORD /d "1" /f
-
 powershell -ExecutionPolicy bypass "Disable-MMAgent -MemoryCompression" 
 
 :: configfure boot settings

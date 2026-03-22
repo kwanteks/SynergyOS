@@ -13,8 +13,6 @@ actions:
   - !appx: {name: '*Clipchamp*', type: family}
   - !appx: {name: '*CloudExperienceHost*', type: family}
   - !appx: {name: '*CommsPhone*', type: family}
-  - !appx: {name: '*ConnectivityStore*', type: family}
-  - !appx: {name: '*ContentDeliveryManager*', type: family}
   - !appx: {name: '*Disney*', type: family}
   - !appx: {name: '*FeedbackHub*', type: family}
   - !appx: {name: '*Getstarted*', type: family}
@@ -48,7 +46,6 @@ actions:
   - !appx: {name: '*Sticky*', type: family}
   - !appx: {name: '*Sway*', type: family}
   - !appx: {name: '*Wallet*', type: family}
-  - !appx: {name: '*WebExperienceHost*', type: app}
   - !appx: {name: '*Windows.DevHome*', type: family}
   - !appx: {name: '*WindowsCamera*', type: family}
   - !appx: {name: '*windowscommunicationsapps*', type: family}
