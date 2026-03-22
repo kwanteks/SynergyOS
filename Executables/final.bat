@@ -28,7 +28,7 @@ for /f "tokens=*" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum\SCSI" ^
 
 
 :: clear taskband registry
-:: Reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband" /f 
+Reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband" /f 
 
 powershell -ExecutionPolicy bypass "Disable-MMAgent -MemoryCompression" 
 
