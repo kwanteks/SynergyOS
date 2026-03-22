@@ -88,7 +88,11 @@ actions:
  - !registryValue: {path: 'HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\Open\Command', value: '@', type: REG_SZ, data: '"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -File "%1"'}
 
  # set taskbar alignment to left
- -  !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarAl', type: REG_DWORD, data: '0'} 
+ -  !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced', value: 'TaskbarAl', type: REG_DWORD, data: '0'}
+
+ # hide recommended section in start menu
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'HideRecommendedSection', type: REG_DWORD, data: '1'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\Explorer', value: 'HideRecommendedSection', type: REG_DWORD, data: '1'}
 
  # hide search box
  - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search', value: 'SearchboxTaskbarMode', type: REG_DWORD, data: '0'}
