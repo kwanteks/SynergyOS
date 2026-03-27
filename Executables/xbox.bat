@@ -6,7 +6,7 @@ if "%1"=="enable" set state=enable
 
 
 if /i "%state%"=="disable" (
-        :: disable xbox services
+    :: disable xbox services
     for %%z in (
     XblAuthManager
     XblGameSave 
@@ -18,7 +18,7 @@ if /i "%state%"=="disable" (
 )
 )
 
- if /i "%state%"=="enable" (
+if /i "%state%"=="enable" (
     :: enable xbox services
     for %%z in (
     XblAuthManager
