@@ -33,5 +33,5 @@ Start-Process "$env:TEMP\\7zip.exe" -ArgumentList "/S" -Wait
 
 # vcredist
 Invoke-WebRequest "https://aka.ms/vs/17/release/vc_redist.x64.exe" -OutFile "$env:TEMP\\vcredist.exe"
-Start-Process "$env:TEMP\\vcredist.exe" -ArgumentList "/quiet /norestart" -Waits
+Start-Process "$env:TEMP\\vcredist.exe" -ArgumentList "/quiet /norestart" -Wait
 
