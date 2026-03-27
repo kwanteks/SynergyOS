@@ -136,4 +136,24 @@ actions:
    wait: true
 
 
+   # disable xbox services
+ - !status {status: 'Disable Defender', option: "disable-defender"}
+ - !powerShell:
+    command: '.\xbox.bat -disable' 
+    exeDir: true
+    runas: currentUserElevated
+    option: 'disable-defender'
+    wait: true
+
+
+ # enable xbox services
+ - !status {status: 'Enable Defender', option: "enable-defender"}
+ - !powerShell:
+   command: '.\xbox.bat -enable' 
+   exeDir: true
+   runas: currentUserElevated
+   option: 'enable-defender'
+   wait: true
+
+
   
