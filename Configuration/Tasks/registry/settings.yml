@@ -110,15 +110,15 @@ actions:
  # enable classic context menu
  - !registryValue: {path: 'HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32', value: '', type: REG_SZ, data: ''}
 
- # disable game bar
- - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\GameBar', value: 'AllowAutoGameMode', type: REG_DWORD, data: '0'}
- - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\GameBar', value: 'AutoGameModeEnabled', type: REG_DWORD, data: '0'}
- - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\GameBar', value: 'GamePanelStartupTipIndex', type: REG_DWORD, data: '3'}
- - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\GameBar', value: 'ShowStartupPanel', type: REG_DWORD, data: '0'}
- - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\GameBar', value: 'UseNexusForGameBarEnabled', type: REG_DWORD, data: '0'}
- - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\GameDVR', value: 'AppCaptureEnabled', type: REG_DWORD, data: '0'}
- - !registryValue: {path: 'HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\GameDVR', value: 'AllowGameDVR', type: REG_DWORD, data: '0'}
- - !registryValue: {path: 'HKLM\\SOFTWARE\\Microsoft\\PolicyManager\default\\ApplicationManagement\\AllowGameDVR', value: 'value', type: REG_DWORD, data: '0'}
+  # disable game bar
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'AllowAutoGameMode', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'AutoGameModeEnabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'GamePanelStartupTipIndex', type: REG_DWORD, data: '3'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'ShowStartupPanel', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\GameBar', value: 'UseNexusForGameBarEnabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR', value: 'AppCaptureEnabled', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR', value: 'AllowGameDVR', type: REG_DWORD, data: '0'}
+ - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR', value: 'value', type: REG_DWORD, data: '0'}   
 
 
  # disable widgets
