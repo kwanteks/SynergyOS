@@ -137,7 +137,7 @@ actions:
 
 
    # disable xbox services
- - !status {status: 'Disable Defender', option: "disable-defender"}
+ - !status {status: 'Disable Xbox', option: "disable-defender"}
  - !powerShell:
     command: '.\xbox.bat -disable' 
     exeDir: true
@@ -147,7 +147,7 @@ actions:
 
 
  # enable xbox services
- - !status {status: 'Enable Defender', option: "enable-defender"}
+ - !status {status: 'Enable Xbox', option: "enable-defender"}
  - !powerShell:
    command: '.\xbox.bat -enable' 
    exeDir: true
