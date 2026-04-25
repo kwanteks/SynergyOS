@@ -8,6 +8,11 @@ actions:
     type: REG_DWORD
     data: '0'
 
+  # OEM Information
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'Model', type: REG_SZ, data: 'SYNERGYOS'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'Manufacturer', type: REG_SZ, data: 'Kwanteks'}
+  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'SupportURL', type: REG_SZ, data: 'https://discord.gg/kwanteks'}
+
  # Disable UAC
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'EnableLUA', type:  REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'PromptOnSecureDesktop', type:  REG_DWORD, data: '0'}
@@ -23,7 +28,7 @@ actions:
   - !cmd: {exeDir: true, command: 'xcopy  "SOS" "%systemdrive%\SOS" /E /I /Y'}
   - !cmd: {exeDir: true, command: 'move /y "SOS.lnk" "%USERPROFILE%\Desktop"'}
 
-  - !writeStatus: {status: "Tweaking Registry"}
+  - !writeStatus: {status: "Applying Registry Tweaks"}
 
   - !writeStatus: {status: "Disabling Windows Updates"}
   - !task {path: 'Tasks\updates\update.yml'}
