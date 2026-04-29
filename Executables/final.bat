@@ -31,7 +31,7 @@ powershell -ExecutionPolicy bypass "Disable-MMAgent -MemoryCompression"
 :: configfure boot settings
 bcdedit /deletevalue useplatformclock
 bcdedit /deletevalue useplatformtick
-bcdedit /set disabledynamictic yes
+bcdedit /set disabledynamictick yes
 bcdedit /set bootmenupolicy Legacy
 
 :: disable DMA remapping
