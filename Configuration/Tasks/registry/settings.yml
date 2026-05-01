@@ -130,7 +130,7 @@ actions:
  # disable defender
  - !status {status: 'Disable Defender', option: "disable-defender"}
  - !powerShell:
-    command: '.\defender.bat -disable' 
+    command: '.\defender.bat disable' 
     exeDir: true
     runas: currentUserElevated
     option: 'disable-defender'
@@ -140,7 +140,7 @@ actions:
  # enable defender
  - !status {status: 'Enable Defender', option: "enable-defender"}
  - !powerShell:
-   command: '.\defender.bat -enable' 
+   command: '.\defender.bat enable' 
    exeDir: true
    runas: currentUserElevated
    option: 'enable-defender'
@@ -148,22 +148,22 @@ actions:
 
 
    # disable xbox services
- - !status {status: 'Disable Xbox', option: "disable-defender"}
+ - !status {status: 'Disable Xbox', option: "disable-xbox"}
  - !powerShell:
-    command: '.\xbox.bat -disable' 
+    command: '.\xbox.bat disable' 
     exeDir: true
     runas: currentUserElevated
-    option: 'disable-defender'
+    option: 'disable-xbox'
     wait: true
 
 
  # enable xbox services
- - !status {status: 'Enable Xbox', option: "enable-defender"}
+ - !status {status: 'Enable Xbox', option: "enable-xbox"}
  - !powerShell:
-   command: '.\xbox.bat -enable' 
+   command: '.\xbox.bat enable' 
    exeDir: true
    runas: currentUserElevated
-   option: 'enable-defender'
+   option: 'enable-xbox'
    wait: true
 
 
