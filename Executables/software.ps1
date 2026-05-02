@@ -1,7 +1,8 @@
 param (
 	[switch]$Chrome,
 	[switch]$Brave,
-	[switch]$Firefox
+	[switch]$Firefox,
+	[switch]$Helium
 )
 
 
@@ -18,6 +19,11 @@ Start-Process -FilePath "$env:TEMP\\chrome.msi" -ArgumentList '/qn' -WindowStyle
 if ($Firefox) {
 curl.exe -LSs "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=en-US" -o "$env:TEMP\\firefox.exe"
 Start-Process -FilePath "$env:TEMP\\firefox.exe" -ArgumentList '/S /ALLUSERS=1' -WindowStyle Hidden -Wait
+}
+
+if ($Helium) {
+	curl.exe -LSs "https://github.com/imputnet/helium-windows/releases/download/0.11.7.1/helium_0.11.7.1_x64-installer.exe" -o "$env:TEMP\\helium.exe"
+	Start-Process -FilePath "$env:TEMP\\helium.exe" -ArgumentList '/S' -WindowStyle Hidden -Wait
 }
 
 
