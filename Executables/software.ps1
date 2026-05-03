@@ -22,9 +22,15 @@ Start-Process -FilePath "$env:TEMP\\firefox.exe" -ArgumentList '/S /ALLUSERS=1' 
 }
 
 if ($Helium) {
-	curl.exe -LSs "https://github.com/imputnet/helium-windows/releases/download/0.11.7.1/helium_0.11.7.1_x64-installer.exe" -o "$env:TEMP\\helium.exe"
-	Start-Process -FilePath "$env:TEMP\\helium.exe" -ArgumentList '/S' -WindowStyle Hidden -Wait
+	curl.exe -LSs "https://github.com/imputnet/helium-windows/releases/download/0.11.7.1/helium_0.11.7.1_x64-installer.exe" -o "$env:TEMP\\helium_0.11.7.1_x64-installer.exe"
+	Start-Process -FilePath "$env:TEMP\\helium_0.11.7.1_x64-installer.exe" -ArgumentList '/S' -WindowStyle Hidden -Wait
 }
+
+if(Librewolf) {
+	curl.exe -LSs "https://dl.librewolf.net/librewolf/150.0.1-1/librewolf-150.0.1-1-windows-x86_64-setup.exe" -o "$env:TEMP\\librewolf-150.0.1-1-windows-x86_64-setup.exe"
+	Start-Process -FilePath "$env:TEMP\\librewolf-150.0.1-1-windows-x86_64-setup.exe" -ArgumentList '/S' -WindowStyle Hidden -Wait
+}
+
 
 
 # startisback

@@ -40,4 +40,22 @@ actions:
    runas: currentUserElevated
    option: "browser-helium"
    wait: true
+
+   # Librewolf
+ - !writeStatus {status: 'Installing Librewolf', option: "browser-librewolf"}
+ - !powerShell:
+   command: '.\software.ps1 -Librewolf'
+   exeDir: true
+   runas: currentUserElevated
+   option: "browser-librewolf"
+   wait: true
+
+   # Vivaldi
+ - !writeStatus {status: 'Installing Vivaldi', option: "browser-vivaldi"}
+ - !powerShell:
+   command: '.\software.ps1 -Vivaldi'
+   exeDir: true
+   runas: currentUserElevated
+   option: "browser-vivaldi"
+   wait: true
     
