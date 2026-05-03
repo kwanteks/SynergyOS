@@ -31,4 +31,13 @@ actions:
    runas: currentUserElevated
    option: "browser-chrome"
    wait: true
+
+  # helium
+ - !writeStatus {status: 'Installing Helium', option: "browser-helium"}
+ - !powerShell:
+   command: '.\software.ps1 -Helium'
+   exeDir: true
+   runas: currentUserElevated
+   option: "browser-helium"
+   wait: true
     
