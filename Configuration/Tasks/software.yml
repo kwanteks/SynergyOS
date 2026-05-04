@@ -4,58 +4,49 @@ description: Install Software
 privilege: TrustedInstaller 
 actions:
 
- # brave
- - !writeStatus: {status: 'Installing Brave', option: "browser-brave"} 
- - !powerShell:
-   command: '.\software.ps1 -Brave'
-   exeDir: true
-   option: "browser-brave"
-   runas: currentUserElevated
-   wait: true
-    
- # firefox 
- - !writeStatus: {status: 'Installing Firefox', option: "browser-firefox"}
- - !powerShell:
-   command: '.\software.ps1 -Firefox'
-   exeDir: true
-   runas: currentUserElevated
-   option: "browser-firefox"
-   wait: true
-    
+  # Brave
+  - !status: {status: 'Installing Brave', option: 'browser-brave'}
+  - !download: {url: 'https://laptop-updates.brave.com/latest/winx64', destination: '%temp%\brave.exe', overwrite: true, option: 'browser-brave'}
+  - !cmd: {command: '"%temp%\brave.exe" /silent /install', runas: currentUserElevated, wait: true, option: 'browser-brave'}
+  
+  # Chrome
+  - !status: {status: 'Installing Chrome', option: 'browser-chrome'}
+  - !download: {url: 'https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi', destination: '%temp%\chrome.msi', overwrite: true, option: 'browser-chrome'}
+  - !cmd: {command: 'msiexec /i "%temp%\chrome.msi" /qn', runas: currentUserElevated, wait: true, option: 'browser-chrome'}
+  
+  # Firefox
+  - !status: {status: 'Installing Firefox', option: 'browser-firefox'}
+  - !download: {url: 'https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US', destination: '%temp%\firefox.exe', overwrite: true, option: 'browser-firefox'}
+  - !cmd: {command: '"%temp%\firefox.exe" /S', runas: currentUserElevated, wait: true, option: 'browser-firefox'}
+  
+  # Helium
+  - !status: {status: 'Installing Helium', option: 'browser-helium'}
+  - !download: {git: 'https://github.com/imputnet/helium-windows', regex: '^helium_.*_x64-installer\.exe$', destination: '%temp%\helium.exe', overwrite: true, option: 'browser-helium'}
+  - !cmd: {command: '"%temp%\helium.exe" /S', runas: currentUserElevated, wait: true, option: 'browser-helium'}
+  
+  # Librewolf
+  - !status: {status: 'Installing Librewolf', option: 'browser-librewolf'}
+  - !download: {url: 'https://dl.librewolf.net/librewolf/150.0.1-1/librewolf-150.0.1-1-windows-x86_64-setup.exe', destination: '%temp%\librewolf.exe', overwrite: true, option: 'browser-librewolf'}
+  - !cmd: {command: '"%temp%\librewolf.exe" /S', runas: currentUserElevated, wait: true, option: 'browser-librewolf'}
+  
+  # Vivaldi
+  - !status: {status: 'Installing Vivaldi', option: 'browser-vivaldi'}
+  - !download: {url: 'https://downloads.vivaldi.com/stable/Vivaldi.6.9.3447.54.x64.exe', destination: '%temp%\vivaldi.exe', overwrite: true, option: 'browser-vivaldi'}
+  - !cmd: {command: '"%temp%\vivaldi.exe" /S', runas: currentUserElevated, wait: true, option: 'browser-vivaldi'}
+  
+  # Zen
+  - !status: {status: 'Installing Zen', option: 'browser-zen'}
+  - !download: {git: 'https://github.com/zen-browser/desktop', regex: '^zen\.installer\.exe$', destination: '%temp%\zen.exe', overwrite: true, option: 'browser-zen'}
+  - !cmd: {command: '"%temp%\zen.exe" /S', runas: currentUserElevated, wait: true, option: 'browser-zen'}
 
-  # chrome
- - !writeStatus {status: 'Installing Chrome', option: "browser-chrome"}
- - !powerShell:
-   command: '.\software.ps1 -Chrome'
-   exeDir: true
-   runas: currentUserElevated
-   option: "browser-chrome"
-   wait: true
 
-  # helium
- - !writeStatus {status: 'Installing Helium', option: "browser-helium"}
- - !powerShell:
-   command: '.\software.ps1 -Helium'
-   exeDir: true
-   runas: currentUserElevated
-   option: "browser-helium"
-   wait: true
-
-   # Librewolf
- - !writeStatus {status: 'Installing Librewolf', option: "browser-librewolf"}
- - !powerShell:
-   command: '.\software.ps1 -Librewolf'
-   exeDir: true
-   runas: currentUserElevated
-   option: "browser-librewolf"
-   wait: true
-
-   # Vivaldi
- - !writeStatus {status: 'Installing Vivaldi', option: "browser-vivaldi"}
- - !powerShell:
-   command: '.\software.ps1 -Vivaldi'
-   exeDir: true
-   runas: currentUserElevated
-   option: "browser-vivaldi"
-   wait: true
+  # VCRedist
+  - !status: {status: 'Installing VCRedist'}
+  - !download: {git: 'https://github.com/abbodi1406/vcredist', regex: '^VisualCppRedist_AIO_x86_x64\.exe$', destination: '%temp%\vcredist.exe', overwrite: true}
+  - !cmd: {command: '"%temp%\vcredist.exe" /ai /gm2', runas: currentUserElevated, wait: true}
+  
+  # 7-Zip
+  - !status: {status: 'Installing 7-Zip'}
+  - !download: {git: 'https://github.com/ip7z/7zip', regex: '^7z.*-x64\.exe$', destination: '%temp%\7Zip.exe', overwrite: true}
+  - !cmd: {command: '"%temp%\7Zip.exe" /S', runas: currentUserElevated, wait: true}
     
