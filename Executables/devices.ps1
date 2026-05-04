@@ -10,6 +10,6 @@ $devices = @(
     "Composite Bus Enumerator",
     "NDIS Virtual Network Adapter Enumerator",
     "Microsoft GS Wavetable Synth",
-    "Microsoft Virtual Drive Enumerato"
+    "Microsoft Virtual Drive Enumerator"
 )
 Get-PnpDevice -FriendlyName $devices -ErrorAction Ignore | Disable-PnpDevice -Confirm:$false -ErrorAction Ignore
