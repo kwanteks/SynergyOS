@@ -2,6 +2,13 @@
 title: Custom
 privilege: Admin
 actions:
+  - !powerShell: {command: '.\suitability.ps1', exeDir: true, wait: true}
+
+  - !writeStatus {status: "Copying Files"}
+  - !cmd: {exeDir: true, command: 'xcopy "Windows" "%windir%" /E /I /Y'}
+  - !cmd: {exeDir: true, command: 'xcopy  "SOS" "%systemdrive%\SOS" /E /I /Y'}
+  - !cmd: {exeDir: true, command: 'move /y "SOS.lnk" "%USERPROFILE%\Desktop"'}
+
   - !registryValue:
     path: 'HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance'
     value: 'Enabled'
@@ -13,7 +20,7 @@ actions:
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'Manufacturer', type: REG_SZ, data: 'Kwanteks'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation', value: 'SupportURL', type: REG_SZ, data: 'https://discord.gg/kwanteks'}
 
- # Disable UAC
+  # Disable UAC
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'EnableLUA', type:  REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'PromptOnSecureDesktop', type:  REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ConsentPromptBehaviorAdmin', type:  REG_DWORD, data: '0'}
@@ -23,14 +30,8 @@ actions:
   - !task: {path: 'Tasks\software.yml'}
 
 
-  - !writeStatus {status: "Copying Files"}
-  - !cmd: {exeDir: true, command: 'xcopy "Windows" "%windir%" /E /I /Y'}
-  - !cmd: {exeDir: true, command: 'xcopy  "SOS" "%systemdrive%\SOS" /E /I /Y'}
-  - !cmd: {exeDir: true, command: 'move /y "SOS.lnk" "%USERPROFILE%\Desktop"'}
-
-  - !writeStatus: {status: "Applying Registry Tweaks"}
-
-  - !writeStatus: {status: "Disabling Windows Updates"}
+ # Registry Tweaks
+  - !writeStatus {status: "Disabling Windows Updates"}
   - !task {path: 'Tasks\updates\update.yml'}
   - !task {path: 'Tasks\updates\driver.yml'}
 
@@ -41,7 +42,7 @@ actions:
   - !task {path: 'Tasks\registry\settings.yml'}
 
   - !writeStatus {status: "Applying Win32ps"}
-  - !task {path: 'Tasks\registry\win32.yml'}
+  - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\PriorityControl', value: 'Win32PrioritySeparation', type: REG_DWORD, data: '36'}
 
   - !writeStatus {status: "Removing AppX Packages"}
   - !task {path: 'Tasks\package\appx.yml'}
@@ -68,5 +69,3 @@ actions:
   - !cmd: {command: '"updhealth.bat"', exeDir: true, runas: currentUserElevated, wait: true}
   - !powerShell: {command: '.\cleanup.ps1', exeDir: true, wait: true}
   - !cmd: {command: '"final.bat"', exeDir: true, runas: currentUserElevated, wait: true}
-
-
