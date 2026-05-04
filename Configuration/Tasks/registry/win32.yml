@@ -1,7 +1,0 @@
----
-title: Win32PrioritySeperation
-description: Configure Win32PrioritySeparation
-privilege: TrustedInstaller
-actions: 
-
- - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\PriorityControl', value: 'Win32PrioritySeparation', type: REG_DWORD, data: '36'}
