@@ -49,11 +49,13 @@ actions:
   - !cmd: {command: '"oned.bat"', exeDir: true, runas: currentUserElevated, wait: true}
 
   - !writeStatus {status: "Applying Scripts"}
-  - !cmd: {command: '"power.bat"', exeDir: true, wait: true}
-  - !cmd: {command: '"services.bat"', exeDir: true, runas: currentUserElevated, wait: true}
-  - !cmd: {command: '"network.bat"', exeDir: true, runas: currentUserElevated, wait: true}
-  - !powerShell: {command: '.\devices.ps1', exeDir: true, wait: true}
-  - !cmd: {command: '"mitigations.bat"', exeDir: true, runas: currentUserElevated, wait: true}
+  - !cmd: {command: '"power.bat"', runas: currentUserElevated, exeDir: true, wait: true}
+  - !cmd: {command: '"services.bat"', runas: currentUserElevated, exeDir: true,  wait: true}
+  - !cmd: {command: '"network.bat"', runas: currentUserElevated, exeDir: true, wait: true}
+  - !powerShell: {command: '.\devices.ps1', runas: currentUserElevated, exeDir: true, wait: true}
+  - !cmd: {command: '"mitigations.bat"', runas: currentUserElevated, exeDir: true, wait: true}
+  - !cmd: {command: '"visuals.bat"', runas: currentUserElevated, exeDir: true, wait: true}
+  - !cmd: {command: '"disable-fth.bat"', runas: currentUserElevated, exeDir: true, wait: true}
   
   - !powerShell: {command: '.\wallpaper.ps1 -Mode Desktop -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
   - !powerShell: {command: '.\wallpaper.ps1 -Mode LockScreen -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
@@ -66,6 +68,6 @@ actions:
     weight: 50
 
   - !writeStatus {status: "Finalizing"}
+  - !cmd: {command: '"final.bat"', exeDir: true, runas: currentUserElevated, wait: true}
   - !cmd: {command: '"updhealth.bat"', exeDir: true, runas: currentUserElevated, wait: true}
   - !powerShell: {command: '.\cleanup.ps1', exeDir: true, wait: true}
-  - !cmd: {command: '"final.bat"', exeDir: true, runas: currentUserElevated, wait: true}
