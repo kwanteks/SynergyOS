@@ -3,44 +3,47 @@ SETLOCAL ENABLEDELAYEDEXPANSION
 
 for %%a in (
   AxInstSV
-  tzautoupdates
-  bthserv
-  BthAvctpSvc
-  BluetoothUserService
   BcastDVRUserService_389fd
-  DoSvc
-  MapsBroker
-  DiagTrack
-  lfsvc
-  dmwappushservice
-  SharedAccess
-  lltdsvc
+  Beep
+  BluetoothUserService
+  BthAvctpSvc
+  bthserv
   CDPUserSvc
-  NetTcpPortSharing
   CscService
-  QWAVE
-  RemoteAccess
-  SensorDataService 
-  SensrSvc
-  SensorService
-  ShellHWDetection
-  ScDeviceEnum
-  SSDPSRV
-  WiaRpc
-  upnphost
-  UserDataSvc
-  UevAgentService
+  DiagTrack
+  dmwappushservice
+  DoSvc
   Fax
   FrameServer
   FrameServerMonitor
-  stisvc
-  WerSvc
-  Spooler
-  PrintWorkflowUserSv
-  PrintNotify
-  wisvc
+  GpuEnergyDrv
   icssvc
-  GpuEnergyDrv    
+  lfsvc
+  lltdsvc
+  MapsBroker
+  NetBT
+  NetTcpPortSharing
+  PrintNotify
+  PrintWorkflowUserSv
+  QWAVE
+  RemoteAccess
+  ScDeviceEnum
+  SensorDataService
+  SensorService
+  SensrSvc
+  SharedAccess
+  ShellHWDetection
+  Spooler
+  SSDPSRV
+  stisvc
+  SysMain
+  tzautoupdates
+  UevAgentService
+  upnphost
+  UserDataSvc
+  WerSvc
+  WiaRpc
+  wisvc
 ) do (
   Reg add "HKLM\SYSTEM\CurrentControlSet\Services\%%a" /v "Start" /t REG_DWORD /d "4" /f
 ) 
