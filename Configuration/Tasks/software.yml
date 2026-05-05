@@ -32,7 +32,7 @@ actions:
   # Vivaldi
   - !status: {status: 'Installing Vivaldi', option: 'browser-vivaldi'}
   - !download: {url: 'https://downloads.vivaldi.com/stable/Vivaldi.6.9.3447.54.x64.exe', destination: '%temp%\vivaldi.exe', overwrite: true, option: 'browser-vivaldi'}
-  - !cmd: {command: '"%temp%\vivaldi.exe" /S', runas: currentUserElevated, wait: true, option: 'browser-vivaldi'}
+  - !cmd: {command: '"%temp%\vivaldi.exe" --vivaldi-silent --do-not-launch-chrome', runas: currentUserElevated, wait: true, option: 'browser-vivaldi'}
   
   # Zen
   - !status: {status: 'Installing Zen', option: 'browser-zen'}
