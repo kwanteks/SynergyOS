@@ -1,6 +1,7 @@
 @echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
 
+
 :: clear pinned taskbar shortcuts
 del /f /q "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar*"
 
@@ -8,11 +9,13 @@ del /f /q "%AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBa
 :: remove onedrive from file explorer sidebar
 Reg add "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /v System.IsPinnedToNameSpaceTree /t REG_DWORD /d 0 /f
 
+
 :: remove oned and msedge shortcut from startup
 Reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "OneDrive" /f
 for /f "tokens=1" %%a in ('Reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" ^| findstr /i "MicrosoftEdgeAutoLaunch"') do (
   Reg delete "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "%%a" /f
 )
+
 
 :: write cache policy
 for /f "tokens=*" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum\SCSI" ^| findstr "HKEY"') do (
@@ -28,16 +31,19 @@ Reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband" /f
 
 powershell -ExecutionPolicy bypass "Disable-MMAgent -MemoryCompression" 
 
+
 :: configfure boot settings
 bcdedit /deletevalue useplatformclock
 bcdedit /deletevalue useplatformtick
 bcdedit /set disabledynamictick yes
 bcdedit /set bootmenupolicy Legacy
 
+
 :: disable DMA remapping
 for /f %%i in ('Reg query "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services" /s /f DmaRemappingCompatible ^| find /i "Services\" ') do (
 	Reg add "%%i" /v "DmaRemappingCompatible" /t REG_DWORD /d "0" /f
 )
+
 
 :: configure mmcss
 Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" /v "SystemResponsiveness" /t REG_DWORD /d "10" /f
@@ -49,7 +55,7 @@ Reg add "HKCU\Control Panel\Desktop" /v WaitToKillTimeout /t REG_SZ /d 2500 /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v WaitToKillServiceTimeout /t REG_SZ /d 2500 /f
 
 
-:: disab;e game bar
+:: disable game bar
 Reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "AllowAutoGameMode" /t REG_DWORD /d "0" /f 
 Reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "AutoGameModeEnabled" /t REG_DWORD /d "0" /f
 Reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "GamePanelStartupTipIndex" /t REG_DWORD /d "3" /f
@@ -58,7 +64,6 @@ Reg add "HKCU\SOFTWARE\Microsoft\GameBar" /v "UseNexusForGameBarEnabled" /t REG_
 Reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d "0" /f 
 Reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowGameDVR" /t REG_DWORD /d "0" /f 
 Reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR" /v "value" /t REG_DWORD /d "0" /f 
-
 
 
 for /f "tokens=*" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum\SCSI" ^| findstr "HKEY"') do (
@@ -80,7 +85,7 @@ fsutil behavior set disable8dot3 1 >NUL 2>nul
 
 setx POWERSHELL_TELEMETRY_OPTOUT 1
 
- 
+
 :: disable gamebarpresencewriter and other apps
 takeown /f "%WinDir%\System32\GameBarPresenceWriter.exe" /a  
 icacls "%WinDir%\System32\GameBarPresenceWriter.exe" /grant Administrators:(F) 
@@ -88,6 +93,21 @@ ren "%WinDir%\System32\GameBarPresenceWriter.exe" "GameBarPresenceWriter32131dad
 takeown /f "%WinDir%\System32\mobsync.exe" /a  
 icacls "%WinDir%\System32\mobsync.exe" /grant Administrators:(F) 
 ren "%WinDir%\System32\mobsync.exe" "mobsyncw31312dadaw.exe"
+
+:: disable background task logging
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-BackgroundTaskInfrastructure/Diagnostic" /v Enabled /t REG_DWORD /d 0 /f
+
+
+:: disable search indexing
+sc stop wsearch
+sc config wsearch start=disabled
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v PreventIndexOnBattery /t REG_DWORD /d 1 /f
+reg add "HKLM\Software\Microsoft\Windows Search\Gather\Windows\SystemIndex" /v RespectPowerModes /t REG_DWORD /d 1 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences" /v WholeFileSystem /t REG_DWORD /d 1 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences" /v SystemFolders /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences" /v EnableNaturalQuerySyntax /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences" /v ArchivedFiles /t REG_DWORD /d 0 /f
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\PrimaryProperties\UnindexedLocations" /v SearchOnly /t REG_DWORD /d 1 /f
 
 
 :: Get the version number from the `ver` command
@@ -109,13 +129,12 @@ if not defined w11 (
   Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "RegisteredOrganization" /t REG_SZ /d "SOS 11" /f >NUL 2>nul
 )
 
+
 :: add new batch file to context menu
 Reg add "HKEY_LOCAL_MACHINE\Software\Classes\.bat\ShellNew" /v "ItemName" /t REG_EXPAND_SZ /d "@C:\Windows\System32\acppage.dll,-6002" /f 
 Reg add "HKEY_LOCAL_MACHINE\Software\Classes\.bat\ShellNew" /v "NullFile" /t REG_SZ /d "" /f 
 
-:: add  new reg file to context menu
+
+:: add new reg file to context menu
 Reg add "HKEY_LOCAL_MACHINE\Software\Classes\.reg\ShellNew" /v "ItemName" /t REG_EXPAND_SZ /d "@C:\Windows\regedit.exe,-309" /f 
 Reg add "HKEY_LOCAL_MACHINE\Software\Classes\.reg\ShellNew" /v "NullFile" /t REG_SZ /d "" /f 
-
-
-
