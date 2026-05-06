@@ -52,6 +52,20 @@ actions:
  - !appx: {name: '*MicrosoftTeams*', type: family}
  - !appx: {name: '*MSTeams*', type: family}
  - !appx: {name: '*Flipgrid*', type: family}
+ - !appx: {name: 'Microsoft.Windows.Copilot*', type: family}
+ - !appx: {name: 'MicrosoftWindows.Client.Copilot*', type: family}
+ - !appx: {name: 'Microsoft.MicrosoftCopilot*', type: family}
+ - !appx: {name: 'MSCopilot*', type: family}
+ - !appx: {name: 'Microsoft.Copilot365*', type: family}
+ - !appx: {name: 'MicrosoftWindows.Client.AIX*', type: family}
+ - !appx: {name: 'MicrosoftWindows.Client.CoreAI*', type: family}
+ - !appx: {name: 'Microsoft.Windows.Ai.Copilot.Provider*', type: family}
+ - !appx: {name: 'Microsoft.WindowsTerminal*', type: family}
+ - !appx: {name: '*Disney*', type: family}
+ - !appx: {name: '*Microsoft.MicrosoftPowerBIForWindows*', type: family}
+ - !appx: {name: '*Microsoft.YourPhone*', type: family}
+ - !appx: {name: '*WebExperienceHost*', type: app, unregister: true}
+ - !registryKey: {path: 'HKLM\SYSTEM\CurrentControlSet\Services\MicrosoftCopilotElevationService', operation: delete}
 
   
  - !status: {status: 'Removing Microsoft Edge'}
