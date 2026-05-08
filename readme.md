@@ -44,7 +44,7 @@ We take data seriously. SynergyOS is always continuously tested against stock Wi
 ## 🤝 Credits & Contributions
 SynergyOS is a community-driven project. A massive thank you to the testers and community members who help fine-tune every registry key and service.
 
-* **Lead Developers:** Kwanteks & Bry1k
+* **Lead Developers:** Kwanteks, Bry1k & Chr
 * **Original Inspiration:** [Khorvie Tech](https://youtube.com/@khorvietech)
 * **Research Sources:** [khorvie.tech](https://khorvie.tech)
 * **Framework:** [Amelabs / AME Wizard](https://amelabs.net)
