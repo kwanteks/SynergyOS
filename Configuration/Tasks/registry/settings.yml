@@ -63,7 +63,6 @@ actions:
  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run', value: 'SecurityHealth', operation: delete}
  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run', value: 'SecurityHealth', operation: delete}
 
-
  # modify this pc 
  - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f}', operation: add}
  - !registryKey: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}', operation: add}
@@ -83,7 +82,6 @@ actions:
  - !run: {exe: 'wevtutil.exe', args: 'set-log "Microsoft-Windows-UserModePowerService/Diagnostic" /e:false'}
  - !run: {exe: 'schtasks', args: '/Change /TN "\\Microsoft\\Windows\\Power Efficiency Diagnostics\\AnalyzeSystem" /Disable'}
 
-
  # set ps1 files to open by default
  - !registryValue: {path: 'HKEY_CLASSES_ROOT\Microsoft.PowerShellScript.1\Shell\Open\Command', value: '@', type: REG_SZ, data: '"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -File "%1"'}
 
@@ -98,14 +96,11 @@ actions:
  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Education', value: 'IsEducationEnvironment', type: REG_DWORD, data: '1'}
  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start', value: 'HideRecommendedSection', type: REG_DWORD, data: '1'}
 
-
  # configure explorer
  - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'DontPrettyPath', type: REG_DWORD, data: '1'}
  - !registryValue: {path: 'HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'HideFileExt', type: REG_DWORD, data: '0'}
  - !registryValue: {path: 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'DisallowShaking', type: REG_DWORD, data: '1'}
  - !registryValue: {path: 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer', value: 'NoInstrumentation', type: REG_DWORD, data: '1'}
-
-
  
  # enable classic context menu
  - !registryValue: {path: 'HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32', value: '', type: REG_SZ, data: ''}
@@ -120,7 +115,6 @@ actions:
  - !registryValue: {path: 'HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR', value: 'AllowGameDVR', type: REG_DWORD, data: '0'}
  - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR', value: 'value', type: REG_DWORD, data: '0'}   
 
-
  # disable widgets
  - !registryValue: {path: 'HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced', value: 'TaskbarDa', type: REG_DWORD, data: '0'}
 
@@ -130,41 +124,17 @@ actions:
  # disable defender
  - !status {status: 'Disable Defender', option: "disable-defender"}
  - !powerShell:
-    command: '.\defender.bat disable' 
+    command: '.\defender.bat' 
     exeDir: true
-    runas: currentUserElevated
+    runas: trustedInstaller
     option: 'disable-defender'
     wait: true
-
-
- # enable defender
- - !status {status: 'Enable Defender', option: "enable-defender"}
- - !powerShell:
-   command: '.\defender.bat enable' 
-   exeDir: true
-   runas: currentUserElevated
-   option: 'enable-defender'
-   wait: true
-
 
    # disable xbox services
  - !status {status: 'Disable Xbox', option: "disable-xbox"}
  - !powerShell:
-    command: '.\xbox.bat disable' 
+    command: '.\xbox.bat' 
     exeDir: true
-    runas: currentUserElevated
+    runas: trustedInstaller
     option: 'disable-xbox'
     wait: true
-
-
- # enable xbox services
- - !status {status: 'Enable Xbox', option: "enable-xbox"}
- - !powerShell:
-   command: '.\xbox.bat enable' 
-   exeDir: true
-   runas: currentUserElevated
-   option: 'enable-xbox'
-   wait: true
-
-
-  
