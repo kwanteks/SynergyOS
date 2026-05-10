@@ -1,6 +1,6 @@
 ---
 title: Custom
-privilege: Admin
+privilege: trustedInstaller
 actions:
 
   - !powerShell: {command: '.\suitability.ps1', exeDir: true, wait: true}
