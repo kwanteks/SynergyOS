@@ -22,3 +22,7 @@ foreach ($folderName in $foldersToRemove) {
         Remove-Item -Path "$folderPath\*" -Force -Recurse | Out-Null
     }
 }
+
+Stop-Process -Name 'StartMenuExperienceHost' -Force -ErrorAction SilentlyContinue
+Remove-Item "$env:LOCALAPPDATA\Microsoft\Windows\Shell\LayoutModification.xml" -Force -ErrorAction SilentlyContinue
+Remove-ItemProperty -Path "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Start" -Name "Config" -Force -ErrorAction SilentlyContinue
