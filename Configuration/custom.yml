@@ -30,7 +30,6 @@ actions:
   - !writeStatus {status: "Installing Software"}
   - !task: {path: 'Tasks\software.yml'}
 
-
  # Registry Tweaks
   - !writeStatus {status: "Disabling Windows Updates"}
   - !task {path: 'Tasks\updates\update.yml'}
@@ -47,7 +46,7 @@ actions:
 
   - !writeStatus {status: "Removing AppX Packages"}
   - !task {path: 'Tasks\package\appx.yml'}
-  - !writeStatus {status: "Removing OneDrive}
+  - !writeStatus {status: "Removing OneDrive"}
   - !cmd: {command: '"oned.bat"', exeDir: true, runas: trustedInstaller, wait: true}
 
   - !writeStatus {status: "Applying Scripts"}
