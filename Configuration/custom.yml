@@ -2,6 +2,7 @@
 title: Custom
 privilege: Admin
 actions:
+
   - !powerShell: {command: '.\suitability.ps1', exeDir: true, wait: true}
 
   - !writeStatus {status: "Copying Files"}
@@ -46,16 +47,17 @@ actions:
 
   - !writeStatus {status: "Removing AppX Packages"}
   - !task {path: 'Tasks\package\appx.yml'}
-  - !cmd: {command: '"oned.bat"', exeDir: true, runas: currentUserElevated, wait: true}
+  - !writeStatus {status: "Removing OneDrive}
+  - !cmd: {command: '"oned.bat"', exeDir: true, runas: trustedInstaller, wait: true}
 
   - !writeStatus {status: "Applying Scripts"}
-  - !cmd: {command: '"power.bat"', runas: currentUserElevated, exeDir: true, wait: true}
-  - !cmd: {command: '"services.bat"', runas: currentUserElevated, exeDir: true,  wait: true}
-  - !cmd: {command: '"network.bat"', runas: currentUserElevated, exeDir: true, wait: true}
-  - !powerShell: {command: '.\devices.ps1', runas: currentUserElevated, exeDir: true, wait: true}
-  - !cmd: {command: '"mitigations.bat"', runas: currentUserElevated, exeDir: true, wait: true}
-  - !cmd: {command: '"visuals.bat"', runas: currentUserElevated, exeDir: true, wait: true}
-  - !cmd: {command: '"disable-fth.bat"', runas: currentUserElevated, exeDir: true, wait: true}
+  - !cmd: {command: '"power.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  - !cmd: {command: '"services.bat"', runas: trustedInstaller, exeDir: true,  wait: true}
+  - !cmd: {command: '"network.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  - !powerShell: {command: '.\devices.ps1', runas: trustedInstaller, exeDir: true, wait: true}
+  - !cmd: {command: '"mitigations.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  - !cmd: {command: '"visuals.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  - !cmd: {command: '"disable-fth.bat"', runas: trustedInstaller, exeDir: true, wait: true}
   
   - !powerShell: {command: '.\wallpaper.ps1 -Mode Desktop -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
   - !powerShell: {command: '.\wallpaper.ps1 -Mode LockScreen -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
@@ -68,6 +70,6 @@ actions:
     weight: 50
 
   - !writeStatus {status: "Finalizing"}
-  - !cmd: {command: '"final.bat"', exeDir: true, runas: currentUserElevated, wait: true}
-  - !cmd: {command: '"updhealth.bat"', exeDir: true, runas: currentUserElevated, wait: true}
-  - !powerShell: {command: '.\cleanup.ps1', exeDir: true, wait: true}
+  - !cmd: {command: '"final.bat"', exeDir: true, runas: trustedInstaller, wait: true}
+  - !cmd: {command: '"updhealth.bat"', exeDir: true, runas: trustedInstaller, wait: true}
+  - !powerShell: {command: '.\cleanup.ps1', exeDir: true, runas: trustedInstaller, wait: true}
