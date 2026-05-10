@@ -59,6 +59,11 @@ actions:
   
   - !powerShell: {command: '.\wallpaper.ps1 -Mode Desktop -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
   - !powerShell: {command: '.\wallpaper.ps1 -Mode LockScreen -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
+  
+  - !writeStatus {status: "Disabling Defender", option: "disable-defender"}
+  - !cmd: {command: '"defender.bat"', runas: trustedInstaller, exeDir: true, wait: true, option: "disable-defender"}
+  - !writeStatus {status: "Disabling Xbox Services", option: "disable-xbox"}
+  - !cmd: {command: '"xbox.bat"', runas: trustedInstaller, exeDir: true, wait: true, option: "disable-xbox"}
 
   - !writeStatus {status: "Optimizing PowerShell"}
   - !run:
