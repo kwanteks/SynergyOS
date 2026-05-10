@@ -53,10 +53,9 @@ actions:
   - !cmd: {command: '"power.bat"', runas: trustedInstaller, exeDir: true, wait: true}
   - !cmd: {command: '"services.bat"', runas: trustedInstaller, exeDir: true,  wait: true}
   - !cmd: {command: '"network.bat"', runas: trustedInstaller, exeDir: true, wait: true}
-  - !powerShell: {command: '.\devices.ps1', runas: trustedInstaller, exeDir: true, wait: true}
   - !cmd: {command: '"mitigations.bat"', runas: trustedInstaller, exeDir: true, wait: true}
   - !cmd: {command: '"visuals.bat"', runas: trustedInstaller, exeDir: true, wait: true}
-  - !cmd: {command: '"disable-fth.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  - !powerShell: {command: '.\devices.ps1', runas: trustedInstaller, exeDir: true, wait: true}
   
   - !powerShell: {command: '.\wallpaper.ps1 -Mode Desktop -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
   - !powerShell: {command: '.\wallpaper.ps1 -Mode LockScreen -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
