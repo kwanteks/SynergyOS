@@ -49,13 +49,18 @@ actions:
   - !writeStatus {status: "Removing OneDrive"}
   - !cmd: {command: '"oned.bat"', exeDir: true, runas: trustedInstaller, wait: true}
 
-  - !writeStatus {status: "Applying Scripts"}
+  - !writeStatus {status: "Disabling Power Saving"}
   - !cmd: {command: '"power.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  - !writeStatus {status: "Disabling Services"}
   - !cmd: {command: '"services.bat"', runas: trustedInstaller, exeDir: true,  wait: true}
+  - !writeStatus {status: "Optimizing Network"}
   - !cmd: {command: '"network.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  - !writeStatus {status: "Disabling Mitigations"}
   - !cmd: {command: '"mitigations.bat"', runas: trustedInstaller, exeDir: true, wait: true}
-  - !cmd: {command: '"visuals.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  - !writeStatus {status: "Disabling Devices"}
   - !powerShell: {command: '.\devices.ps1', runas: trustedInstaller, exeDir: true, wait: true}
+  - !writeStatus {status: "Configuring Visuals"}
+  - !cmd: {command: '"visuals.bat"', runas: trustedInstaller, exeDir: true, wait: true}
   
   - !powerShell: {command: '.\wallpaper.ps1 -Mode Desktop -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
   - !powerShell: {command: '.\wallpaper.ps1 -Mode LockScreen -ImagePath $env:systemroot\Web\Wallpaper\sos.png', exeDir: true, runas: currentUserElevated}
