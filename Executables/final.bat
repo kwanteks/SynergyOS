@@ -27,13 +27,10 @@ for /f "tokens=*" %%i in ('reg query "HKLM\SYSTEM\CurrentControlSet\Enum\SCSI" ^
 
 
 :: clear taskband registry
-Reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband" /f 
-
-powershell -ExecutionPolicy bypass "Disable-MMAgent -MemoryCompression" 
+Reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband" /f
 
 
 :: configure boot settings
-bcdedit /set description "SynergyOS"
 bcdedit /timeout 10
 bcdedit /set disabledynamictick yes
 bcdedit /set bootmenupolicy Legacy
@@ -154,9 +151,11 @@ if %version% geq 22000 (
     set w11=false
 )
 if not defined w11 (
+  bcdedit /set description "SynergyOS 10"
   Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model"  /t REG_SZ /d "SOS 10" /f >NUL 2>nul
   Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "RegisteredOrganization" /t REG_SZ /d "SynergyOS 10" /f >NUL 2>nul
 ) else (
+  bcdedit /set description "SynergyOS 11"
   Reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model"  /t REG_SZ /d "SOS 11" /f >NUL 2>nul
   Reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion" /v "RegisteredOrganization" /t REG_SZ /d "SynergyOS 11" /f >NUL 2>nul
 )
