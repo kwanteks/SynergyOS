@@ -48,7 +48,7 @@ actions:
   - !service: {name: 'Spooler', operation: change, startup: 4}
   - !service: {name: 'SSDPSRV', operation: change, startup: 4}
   - !service: {name: 'stisvc', operation: change, startup: 4}
-  - !service: {name: 'SysMain', operation: change, startup: 4}
+  - !service: {name: 'sysmain', operation: change, startup: 4}
   - !service: {name: 'TrkWks', operation: change, startup: 4}
   - !service: {name: 'TroubleshootingSvc', operation: change, startup: 4}
   - !service: {name: 'tzautoupdates', operation: change, startup: 4}
