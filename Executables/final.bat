@@ -114,9 +114,6 @@ Reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\CredentialG
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\KernelShadowStacks" /v "Enabled" /t REG_DWORD /d 0 /f
 Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v "RunAsPPL" /t REG_DWORD /d 0 /f
 
-:: zero dilaj final boss
-Reg add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Kernel" /v "ZeroDelay" /t REG_BINARY /d "1111111111111111111111111111111111111111111111111111111111111111" /f
-
 :: Enable Optimizations for Windowed/Borderless Games
 Reg add "HKCU\Software\Microsoft\DirectX\UserGpuPreferences" /v "DirectXUserGlobalSettings" /t REG_SZ /d "SwapEffectUpgradeEnable=1;" /f
 
