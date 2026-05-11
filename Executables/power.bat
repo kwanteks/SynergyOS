@@ -23,8 +23,11 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "SleepStudyDisabled" /t
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "DeepIoCoalescingEnabled" /t REG_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "CoalescingFlushInterval" /t REG_DWORD /d "0" /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v "CoalescingTimerInterval" /t REG_DWORD /d "0" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v MSDisabled /t REG_DWORD /d "1" /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Power" /v EventProcessorEnabled /t REG_DWORD /d "0" /f
 
 powershell -nop -noni -exec bypass -c "Get-WmiObject MSPower_DeviceEnable -Namespace root\wmi | ForEach-Object { $_.enable = $false; $_.psbase.put(); }"
+powercfg -delete 77777777-7777-7777-7777-777777777777
 powercfg -import "%WinDir%\sos.pow" 77777777-7777-7777-7777-777777777777
 powercfg -setactive 77777777-7777-7777-7777-777777777777
 powercfg -delete 381b4222-f694-41f0-9685-ff5bb260df2e
