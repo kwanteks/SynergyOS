@@ -27,6 +27,9 @@ actions:
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ConsentPromptBehaviorAdmin', type:  REG_DWORD, data: '0'}
   - !registryValue: {path: 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System', value: 'ValidateAdminCodeSignatures', type:  REG_DWORD, data: '0'}
 
+ # Win32Prio
+ - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\PriorityControl', value: 'Win32PrioritySeparation', type: REG_DWORD, data: '36'}
+
   - !writeStatus {status: "Installing Software"}
   - !task: {path: 'Tasks\software.yml'}
 
@@ -41,24 +44,24 @@ actions:
   - !writeStatus {status: 'Configuring Settings'}
   - !task {path: 'Tasks\registry\settings.yml'}
 
-  - !writeStatus {status: "Applying Win32ps"}
-  - !registryValue: {path: 'HKLM\SYSTEM\ControlSet001\Control\PriorityControl', value: 'Win32PrioritySeparation', type: REG_DWORD, data: '36'}
-
   - !writeStatus {status: "Removing AppX Packages"}
   - !task {path: 'Tasks\package\appx.yml'}
+  
   - !writeStatus {status: "Removing OneDrive"}
   - !cmd: {command: '"oned.bat"', exeDir: true, runas: trustedInstaller, wait: true}
 
   - !writeStatus {status: "Disabling Power Saving"}
   - !cmd: {command: '"power.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  
   - !writeStatus {status: "Disabling Services"}
-  - !cmd: {command: '"services.bat"', runas: trustedInstaller, exeDir: true,  wait: true}
+  - !task {path: 'Tasks\services.yml'}
+  
   - !writeStatus {status: "Optimizing Network"}
   - !cmd: {command: '"network.bat"', runas: trustedInstaller, exeDir: true, wait: true}
-  - !writeStatus {status: "Disabling Mitigations"}
-  - !cmd: {command: '"mitigations.bat"', runas: trustedInstaller, exeDir: true, wait: true}
+  
   - !writeStatus {status: "Disabling Devices"}
   - !powerShell: {command: '.\devices.ps1', runas: trustedInstaller, exeDir: true, wait: true}
+  
   - !writeStatus {status: "Configuring Visuals"}
   - !cmd: {command: '"visuals.bat"', runas: trustedInstaller, exeDir: true, wait: true}
   
@@ -67,6 +70,10 @@ actions:
   
   - !writeStatus {status: "Disabling Defender", option: "disable-defender"}
   - !cmd: {command: '"defender.bat"', runas: trustedInstaller, exeDir: true, wait: true, option: "disable-defender"}
+  
+  - !writeStatus {status: "Disabling Mitigations"}
+  - !cmd: {command: '"mitigations.bat"', runas: trustedInstaller, exeDir: true, wait: true, option: "disable-mitigations"}
+  
   - !writeStatus {status: "Disabling Xbox Services", option: "disable-xbox"}
   - !cmd: {command: '"xbox.bat"', runas: trustedInstaller, exeDir: true, wait: true, option: "disable-xbox"}
 
